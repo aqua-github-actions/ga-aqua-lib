@@ -4,13 +4,12 @@ const serviceName = 'aqua';
 const client = require('./net/client')(serviceName);
 
 class Aqua {
-  constructor({baseUrl, username, password}) {
+  constructor({baseUrl, token = ''}) {
     this.baseUrl = baseUrl;
-    this.username = username;
-    this.password = password;
+    this.token = token;
   }
 
-  async login() {
+  async login({username, password}) {
     return this.fetch('token',
         {
           pathname: '/token',
@@ -19,11 +18,25 @@ class Aqua {
           method: 'POST',
           body: new URLSearchParams([
             ['grant_type', 'password'],
-            ['username', this.username],
-            ['password', this.password],
+            ['username', username],
+            ['password', password],
           ]),
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+    );
+  }
+
+  async logout() {
+    return this.fetch('Session',
+        {
+          pathname: '/Session',
+        },
+        {
+          method: 'DELETE',
+          headers: {
+            'Authorization': 'Bearer ' + this.token,
           },
         }
     );
