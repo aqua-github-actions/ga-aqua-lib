@@ -1,0 +1,29 @@
+{
+  "name": "aqua-lib",
+  "version": "1.0.0",
+  "description": "Common lib for aqua github actions",
+  "scripts": {
+    "eslint": "eslint --ignore-pattern node_modules/ '**/*.js'",
+    "eslint_fix": "eslint --fix --ignore-pattern node_modules/ '**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uniqueck/ga-aqua-lib.git"
+  },
+  "keywords": [],
+  "author": "Constantin Krüger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uniqueck/ga-aqua-lib/issues"
+  },
+  "homepage": "https://github.com/uniqueck/ga-aqua-lib#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.7",
+    "@actions/github": "^5.0.0",
+    "node-rest-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
