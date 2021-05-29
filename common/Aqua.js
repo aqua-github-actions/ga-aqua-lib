@@ -1,4 +1,5 @@
 const {format} = require('url');
+const core = require('@actions/core');
 
 const serviceName = 'aqua';
 const client = require('./net/client')(serviceName);
@@ -101,6 +102,7 @@ class Aqua {
     try {
       await client(state, `${serviceName}:${apiMethodName}`);
     } catch (error) {
+      core.error(`Error: ${error}`);
       const fields = {
         originError: error,
         source: 'aqua',
