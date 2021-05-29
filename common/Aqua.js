@@ -63,14 +63,14 @@ class Aqua {
         },
         {
           method: 'PUT',
-          body: {
+          body: JSON.stringify({
             'Details': [
               {
                 'FieldId': 'Status',
                 'Value': transitionId,
               },
             ],
-          },
+          }),
           headers: {
             'Authorization': 'Bearer ' + this.token,
           },
