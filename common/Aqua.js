@@ -42,6 +42,41 @@ class Aqua {
     );
   }
 
+  /**
+  * Updates the transition of a defect in aqua.
+  *
+  */
+  async updateTransition({defect, transition}) {
+    const transitionIds = {
+      'closed': 1476,
+      'new': 1527,
+      'solved': 1474,
+      'in processing': 1528,
+      'reopened': 1529,
+      'paused': 1530,
+    };
+    const transitionId = transitionIds[transition.toLowerCase()];
+    return this.fetch('Defect',
+        {
+          pathname: '/Defect/' + defect,
+        },
+        {
+          method: 'PUT',
+          body: {
+            'Details': [
+              {
+                'FieldId': 'Status',
+                'Value': transitionId,
+              },
+            ],
+          },
+          headers: {
+            'Authorization': 'Bearer ' + this.token,
+          },
+        }
+    );
+  }
+
   /* eslint max-len: "off" */
   async fetch(apiMethodName, {host, pathname, query}, {method, body, headers = {}} = {}) {
     const url = format({
