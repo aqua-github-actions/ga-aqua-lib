@@ -48,6 +48,11 @@ class Aqua {
   *
   */
   async updateTransition({defect, transition}) {
+    if (defect.toLowerCase().startsWitch('df')) {
+        defect = defect.substring(2);
+    } else {
+        throw new Error('Defect ${defect} should be match the following format \'DF[0-9]+\'');
+    }
     const transitionIds = {
       'closed': 1476,
       'new': 1527,
@@ -102,7 +107,7 @@ class Aqua {
     try {
       await client(state, `${serviceName}:${apiMethodName}`);
     } catch (error) {
-      core.error(`Error: ${error}`);
+      core.error(`Error: \'${error}\'`);
       const fields = {
         originError: error,
         source: 'aqua',
