@@ -83,6 +83,33 @@ class Aqua {
     );
   }
 
+  /**
+  * Adds a comment / note to the defect
+  */
+  async addComment({defect, comment, commentInHtml = false}) {
+    if (defect.toLowerCase().startsWith('df')) {
+      defect = defect.substring(2);
+    } else {
+      throw new Error('Defect ${defect} should be match the following format \'DF[0-9]+\'');
+    }
+    return this.fetch('AddNote', {
+        pathname: '/Defect/' + defect + '/Enclosure',
+    },
+    {
+        method: 'POST',
+        body: JSON.stringify({
+          "Type": "Note",
+          "Content": {
+            "PlainText": comment,
+          }
+        }),
+        headers: {
+          'Authorization': 'Bearer ' + this.token,
+        },
+    }
+    )
+  }
+
   /* eslint max-len: "off" */
   async fetch(apiMethodName, {host, pathname, query}, {method, body, headers = {}} = {}) {
     const url = format({
