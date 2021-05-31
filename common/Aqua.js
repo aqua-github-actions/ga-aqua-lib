@@ -48,7 +48,7 @@ class Aqua {
   *
   */
   async updateTransition({defect, transition}) {
-    if (defect.toLowerCase().startsWitch('df')) {
+    if (defect.toLowerCase().startsWith('df')) {
         defect = defect.substring(2);
     } else {
         throw new Error('Defect ${defect} should be match the following format \'DF[0-9]+\'');
