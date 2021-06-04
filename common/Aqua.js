@@ -84,6 +84,26 @@ class Aqua {
   }
 
   /**
+  * Get a defect
+  */
+  async getDefect({defect}) {
+    if (defect.toLowerCase().startsWith('df')) {
+      defect = defect.substring(2);
+    } else {
+      throw new Error('Defect ${defect} should be match the following format \'DF[0-9]+\'');
+    }
+    return this.fetch('GetDefect', {
+      pathname: '/Defect/' + defect,
+    },
+    {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      },
+    });
+  }
+
+  /**
   * Adds a comment / note to the defect
   */
   async addComment({defect, comment, commentInHtml = false}) {
