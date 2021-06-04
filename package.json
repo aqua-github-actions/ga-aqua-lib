@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uniqueck/ga-aqua-lib.git"
+    "url": "git+https://github.com/aqua-github-actions/ga-aqua-lib.git"
   },
   "keywords": [],
   "author": "Constantin Krüger",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/uniqueck/ga-aqua-lib/issues"
+    "url": "https://github.com/aqua-github-actions/ga-aqua-lib/issues"
   },
-  "homepage": "https://github.com/uniqueck/ga-aqua-lib#readme",
+  "homepage": "https://github.com/aqua-github-actions/ga-aqua-lib#readme",
   "dependencies": {
     "@actions/core": "^1.2.7",
     "@actions/github": "^5.0.0",

@@ -49,9 +49,9 @@ class Aqua {
   */
   async updateTransition({defect, transition}) {
     if (defect.toLowerCase().startsWith('df')) {
-        defect = defect.substring(2);
+      defect = defect.substring(2);
     } else {
-        throw new Error('Defect ${defect} should be match the following format \'DF[0-9]+\'');
+      throw new Error('Defect ${defect} should be match the following format \'DF[0-9]+\'');
     }
     const transitionIds = {
       'closed': 1476,
@@ -93,21 +93,21 @@ class Aqua {
       throw new Error('Defect ${defect} should be match the following format \'DF[0-9]+\'');
     }
     return this.fetch('AddNote', {
-        pathname: '/Defect/' + defect + '/Enclosure',
+      pathname: '/Defect/' + defect + '/Enclosure',
     },
     {
-        method: 'POST',
-        body: JSON.stringify({
-          "Type": "Note",
-          "Content": {
-            "PlainText": comment,
-          }
-        }),
-        headers: {
-          'Authorization': 'Bearer ' + this.token,
+      method: 'POST',
+      body: JSON.stringify({
+        'Type': 'Note',
+        'Content': {
+          'PlainText': comment,
         },
+      }),
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      },
     }
-    )
+    );
   }
 
   /* eslint max-len: "off" */
